@@ -1,0 +1,85 @@
+import React, { Component } from 'react';
+import { StatusBar } from 'expo-status-bar';
+import { StyleSheet, Text, View, TextInput, Button, Alert, Image } from 'react-native';
+import Logo from './assets/adaptive-icon.png'
+
+export default class App extends Component {
+  state = {
+    numAdults: "",
+    numCrianca:"",
+    qHora:"",
+  }
+
+  calculateMeatAdulto = () => {
+    const { numAdults } = this.state;
+    return numAdults * 500;
+  }
+  calculateMeatCrianca = () => {
+    const { numCrianca } = this.state;
+    return numCrianca * 500;
+  }
+
+  calculateMeatTotal = () => {
+    
+    return numAdults + numCrianca * 500;
+  }
+
+  handleChange = (text) => {
+    this.setState({ numAdults: text });
+  }
+
+   handleChange1 = (text1) => {
+    this.setState({ numCrianca: text1 });
+  }
+   handleChange2 = (text2) => {
+    this.setState({ qHora: text2 });
+  }
+
+  render() {
+    const { numAdults,numCrianca,qHora } = this.state;
+    
+    return (
+      <View style={styles.container}>
+      <View style={styles.second}>
+      <Image
+        style={styles.logo}
+        source={Logo}
+        
+      />
+      </View>
+      <><Text>Quantidade de Adultos: 
+        <TextInput
+          placeholder='Adultos'
+          padding={8}
+          value={numAdults}
+          onChangeText={this.handleChange}
+        /></Text>
+
+        <Text>Quantidade de Crianças: 
+          <TextInput
+          padding={3}
+          
+          value={numCrianca}
+          onChangeText={this.handleChange1}
+        />
+        </Text>
+
+        <Text>Duração do Churrasco: 
+        <TextInput
+          padding={3}
+          
+          value={qHora}
+          onChangeText={this.handleChange2}
+        />
+        </Text>
+
+        <Text>
+          Quantidade de carne necessária: {this.calculateMeatAdulto()}g
+        </Text>
+      </>
+    
+  </View>
+    );
+  
+
+}}

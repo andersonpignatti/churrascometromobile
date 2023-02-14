@@ -1,0 +1,36 @@
+import React, { Component } from 'react';
+import { TextInput,Text } from 'react-native';
+
+class App extends Component {
+  state = {
+    numAdults: 0
+  }
+
+  calculateMeat = () => {
+    const { numAdults } = this.state;
+    return numAdults * 500;
+  }
+
+  handleChange = (text) => {
+    this.setState({ numAdults: text });
+  }
+
+  render() {
+    const { numAdults } = this.state;
+    return (
+      <>
+        <TextInput
+          padding={3}
+          placeholder="Quantidade de adultos"
+          value={numAdults}
+          onChangeText={this.handleChange}
+        />
+        <Text>
+          Quantidade de carne necessária: {this.calculateMeat()}g
+        </Text>
+      </>
+    );
+  }
+}
+
+export default App;

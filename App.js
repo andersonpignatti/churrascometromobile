@@ -5,8 +5,12 @@ import Logo from './assets/adaptive-icon.png'
 
 
 export default function App() {
-  
-  const [adultos,setValor]=useState(0)
+ 
+  const [adultos,setAdultos]=useState("")
+  const [crianca,setCrianca]=useState("")
+  const [tempo,setTempo]=useState("")
+
+
   return (
     <View style={styles.container}>
       <View style={styles.second}>
@@ -20,30 +24,41 @@ export default function App() {
       
       <Text style={styles.txt}>Quantidade de Adultos</Text>
         <TextInput 
-        value={(adultos)} 
         style={styles.inputext} 
         placeholder="Quantidade de Adultos" 
         keyboardType='numeric'
-        onChangeText={(text1)=>{setValor(text1)}}
-        >
-        
-        </TextInput>
+        value={adultos}
+        onChangeText={text=>setAdultos(text)}
+        ></TextInput>
 
       <Text style={styles.txt}>Quantidade de Crianças</Text>
-      <TextInput style={styles.inputext} placeholder="Quantidade de Crianças" keyboardType='numeric'></TextInput>
+      
+      <TextInput style={styles.inputext} 
+      placeholder="Quantidade de Crianças" 
+      keyboardType='numeric'
+      value={crianca}
+      onChangeText={text=>setCrianca(text)}
+      ></TextInput>
+      
+      
       <Text style={styles.txt}>Tempo de Festa</Text>
-      <TextInput style={styles.inputext}placeholder="Tempo de Festa" keyboardType='numeric'></TextInput>
+      <TextInput style={styles.inputext}
+      placeholder="Tempo de Festa" 
+      keyboardType='numeric'
+      value={tempo}
+      onChangeText={text=>setTempo(text)}
+      ></TextInput>
       
       <Button color="red" 
               
         title="Calcular"
-        onPress={() => Alert.alert(this.useState.adultos)}
+        onPress={() => Alert.alert("Teste",tempo)}
       />
       <StatusBar style="auto" />
     </View>
     
   );
-}
+  }
 
 const styles = StyleSheet.create({
   container: {
